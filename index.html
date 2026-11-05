@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NoteMap mark 0.5</title>
+  <style>
+    body   { font-family: sans-serif; max-width: 500px; margin: 0 auto; padding: 16px; }
+    button, input, select { font-size: 18px; padding: 12px; margin: 6px 0; width: 100%; box-sizing: border-box; }
+    .map   { height: 300px; margin: 10px 0; }
+    #warning { background: rgb(221, 147, 51); color: white; padding: 12px; font-weight: bold; }
+    .note  { background: white; padding: 8px; margin: 6px 0; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+<!-- the styling is like all inline and we need to make a css 
+ file at some point ngl but i lowkey am not worried about it rn-->
+
+  <!-- shout out Andrew H's activity diagram i legit based 
+   like 85% of the interaction structure off the one you put in the google doc-->
+  <div id="screenRole" class="screen">
+    <h1>NoteMap</h1>
+    <button onclick="chooseRole('commuter')">Commuter</button>
+    <button onclick="chooseRole('caretaker')">Caretaker</button>
+  </div>
+
+  <!-- the pairing code -->
+  <div id="screenCode" class="screen" hidden>
+    <h2>Pairing code</h2>
+    <p>Generate a code - then give the same code to the other person.</p>
+    <button onclick="makeCode()">Generate code</button>
+    <input id="codeBox" placeholder="Or type a code you were given">
+    <button onclick="goNext()">Continue</button>
+    <p id="codeError"></p>
+  </div>
+
+  <!-- only commuter -->
+  <div id="screenCommuter" class="screen" hidden>
+    <h2>Commuter</h2>
+    <div id="warning" hidden></div>
+    <div id="mapCommuter" class="map"></div>
+    <p id="myStatus">Finding your location...</p>
+
+    <input id="destination" placeholder="Where to? (address or place)">
+    <select id="mode"><option>WALKING</option></select>
+    <!-- if we added like "<option>DRIVING</option><option>TRANSIT</option>" we could add those but 
+     i found it like really annoying trying to get those to display properly and it just ended up being super hard
+     to tell when the bus would show up but the car one was ok it just looks exactly the same as walking -->
+    <input id="routeNote" placeholder="Trip notes">
+    <button onclick="makeRoute()">Make route</button>
+    <button onclick="startRoute()">Start route</button>
+
+    <h3>Notes from caretaker</h3>
+    <div id="notesForCommuter"></div>
+  </div>
+
+  <!-- only caretaker -->
+  <div id="screenCaretaker" class="screen" hidden>
+    <h2>Caretaker</h2>
+    <div id="mapCaretaker" class="map"></div>
+    <p id="commuterStatus">Wait for commuter to enter stuff</p>
+
+    <h3>Commuter's routes</h3>
+    <div id="routeList"></div>
+
+    <h3>Your notes</h3>
+    <input id="newNote" placeholder="Write a note for the commuter">
+    <button onclick="addNote()"  >Send note</button>
+    <div id="caretakerNoteList"></div>
+  </div>
+
+  <!-- I didnt make a readme but when its made it needs to point to this bit to be like put your key in this spot
+   or it just wont work -->
+   <!-- going to need a .env-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=ENTERKEYHERE&v=weekly"></script>
+  <script src="app.js"></script>
+</body>
+</html>
