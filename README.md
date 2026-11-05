@@ -1,6 +1,6 @@
 # NoteMap
 
-For this program to work, you will need a Google Maps API key with the Maps JavaScript API enabled and the Routes API enabled
+This is a prototype built in JavaScript, which will be changed to Kotlin in Release 2.For this program to work, you will need a Google Maps API key with the Maps JavaScript API enabled and the Routes API enabled
 Your key will need to be entered at the bottom of the index.html page, replacing the "ENTERKEYHERE"
 
 This project will run with Node.js without requiring a build, so just load it up in your IDE and use "npm start" to launch the program
