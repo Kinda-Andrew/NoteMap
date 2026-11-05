@@ -6,3 +6,5 @@ Your key will need to be entered at the bottom of the index.html page, replacing
 This project will run with Node.js without requiring a build, so just load it up in your IDE and use "npm start" to launch the program
 
 To properly simulate the user experience, you will need to open localhost on 2 seperate tabs and share the generated or entered pairing code between both tabs. 
+
+Style guide: https://developer.android.com/kotlin/style-guide
