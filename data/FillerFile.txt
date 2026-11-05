@@ -1,0 +1,1 @@
+This text document is only here so i could upload the data folder to the GitHub, if we want we could keep one of the json files in here when we push to the git and we can get rid of this 
