@@ -1,14 +1,14 @@
 // these are the variable i think we would need to change quickly when testing so i put them at the top
 var OFF_ROUTE_METRES = 60;
-var Idle_Seconds = 15 * 60;  //decrease this one way more when testing
-var Idle_Radius = 25;   
+var IDLE_SECONDS = 15 * 60;  //decrease this one way more when testing
+var IDLE_RADIUS = 25;
 var UPDATE_EVERY_MS = 10000; //update timer
 
 // this is all stuff thats functionally gonna be saved by our data file
 var role = '';  // 'commuter' or 'caretaker'
-var code = '';   
+var code = '';
 
-var map;  
+var map;
 var data = {}; // this is for the routes, status, caretakerNotes that have to be sent through the server
 
 
@@ -181,7 +181,7 @@ function startCommuter() {
 
 
     // this resets the idle timer when theyve moved
-    if (metresBetween(myPosition, lastMoved.position) > Idle_Radius) {
+    if (metresBetween(myPosition, lastMoved.position) > IDLE_RADIUS) {
 
       lastMoved = { position: myPosition, time: Date.now() };
 
@@ -276,7 +276,7 @@ async function everyTenSeconds() {
       problems.push('OFF ROUTE');
     }
     var secondsStill = (Date.now() - lastMoved.time) / 1000;
-    if (secondsStill > Idle_Seconds) {
+    if (secondsStill > IDLE_SECONDS) {
       problems.push('IDLE');
 
     }
